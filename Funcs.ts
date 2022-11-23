@@ -55,6 +55,7 @@ function addWord(letter: string)
     }
     usersBoard.userWord=usersBoard.userWord.concat(letter)
     let boxToAdd=document.getElementById(usersBoard.row +"-"+usersBoard.colum)
+    // @ts-ignore
     boxToAdd.innerText=letter;
 }
 
@@ -69,7 +70,7 @@ function  getRandomWord()
 function resetGame()
 {
     //מאפס את הנתונים של המשתמש
-    usersBoard.wordToGuess=words[getRandomWord()];
+    usersBoard.wordToGuess=  words[getRandomWord()];
     usersBoard.row=1;
     usersBoard.colum=0;
     usersBoard.userWord="";
@@ -78,7 +79,7 @@ function resetGame()
 
 function showLoserMessage()
 {
-    alert("הכל מלא ולכן הפסדת ): ,תרענן על מנת להתחיל מחדש בהצלחה בפעם הבאה!");
+    alert(" מילאת הכל ולא הצלחת לנחש מה המילה :( בהצלחה בפעם הבאה! אתה יכול לרענן את הדף בשביל להתחיל מחדש  "+ usersBoard.wordToGuess +" זו המילה  ");
 }
 
 
@@ -110,9 +111,9 @@ function checkWord()
 
         } else if (i == words.length-1)
         {
-            alert("המילה הזו לא קיימת במאגר")
-            resetUsersWord()
-            resetRow()
+            alert("המילה הזו לא קיימת במאגר");
+            resetUsersWord();
+            resetRow();
         }
     }
 }
@@ -127,7 +128,12 @@ function nextRow()
 function paintLetters ()
 {
     let boxToPaint;
-    let colum
+    let colum;
+    debugger;
+
+
+    //עיתון
+    //ענבים
 
     for (let i = 0; i < usersBoard.wordToGuess.length; i++)
     {
@@ -135,23 +141,38 @@ function paintLetters ()
         if(usersBoard.wordToGuess.charAt(i)==usersBoard.userWord.charAt(i))
         {
             colum=i+1;
-            boxToPaint=document.getElementById(usersBoard.row+"-"+colum).style.background="#538d4e";
+            changeBackground(usersBoard.row+"-"+colum,"#538d4e")
             colum=0;
             continue;
         }
 
-        // אם המיקומים לא שווים הוא יבדוק אם יש אות בסטרינג שקיימת בסטרינג של המילה המורגלת אם כן הוא יצבע בהתאם
+        // גאם המיקומים לא שווים הוא יבדוק אם יש אות בסטרינג שקיימת בסטרינג של המילה המוגרלת אם כן הוא יצבע בהתאם ואם לא זו אות שלא קיימתי בסטרינג והוא יצבע את האות במקלדת
         for (let j = 0; j <  usersBoard.userWord.length; j++)
         {
-            if (usersBoard.wordToGuess.charAt(i)==usersBoard.userWord.charAt(j))
+            if (usersBoard.userWord.charAt(i)==usersBoard.wordToGuess.charAt(j))
             {
-                colum=j+1;
-                boxToPaint=document.getElementById(usersBoard.row+"-"+colum).style.background="#b59f3b";
+                colum=i+1;
+                changeBackground(usersBoard.row+"-"+colum,"#b59f3b")
                 colum=0;
+                break;
             }
+
+            if (j==4)
+            {
+                changeBackground(usersBoard.userWord.charAt(i),"#3a3a3c");
+            }
+
         }
         colum=0;
     }
+}
+
+
+
+function changeBackground(element : string,color : string)
+{
+    // @ts-ignore
+    document.getElementById(element).style.background=color;
 }
 
 function resetRow()
@@ -160,8 +181,11 @@ function resetRow()
     let colum = usersBoard.colum;
     while (!(colum==0))
     {
-        let boxToReset=document.getElementById(usersBoard.row+"-"+colum)
+
+        let boxToReset=document.getElementById(usersBoard.row+"-"+colum);
+        // @ts-ignore
         boxToReset.innerText="";
+
         colum=colum-1;
     }
     resetUserColum()
@@ -182,12 +206,13 @@ function  deleteLetter()
     //במקרה שהשחקן מנסה למחוק אחרי שהוא ניצח תוצג הודעה
     if (usersBoard.won)
     {
-        alert("כבר ניצחת אחי")
+        alert("כבר ניצחת אחי");
         return;
     }
 
     //מקבל את  האלמנט שצריך למחוק לפי שורה ועמודה
-    let boxToDelete=document.getElementById(usersBoard.row+"-"+usersBoard.colum)
+    let boxToDelete=document.getElementById(usersBoard.row+"-"+usersBoard.colum);
+    // @ts-ignore
     boxToDelete.innerText="";
 
     //מעדכן גם בשדות של המשתמש שהמילה שונתה
