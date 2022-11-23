@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>Wordle</title>
+</head>
+
+<link rel="stylesheet" href="Styles.css" >
+<script src="Funcs.js"></script>
+<body>
+
+<header>
+    <div id="Title"> וורד-לי </div>
+</header>
+
+
+<div class="game-UI" role="group">
+
+
+    <div id="board-container" role="group" >
+
+        <div id="row-1" class="row" role="group" >
+            <div id="1-5" class="letter-box"  aria-label="empty" ></div>
+            <div id="1-4" class="letter-box"  aria-label="empty" ></div>
+            <div id="1-3" class="letter-box"  aria-label="empty" ></div>
+            <div id="1-2" class="letter-box"  aria-label="empty" ></div>
+            <div id="1-1" class="letter-box"  aria-label="empty" ></div>
+        </div>
+
+        <div id="row-2" class="row" role="group" >
+            <div id="2-5" class="letter-box"  aria-label="empty" ></div>
+            <div id="2-4" class="letter-box"  aria-label="empty" ></div>
+            <div id="2-3" class="letter-box"  aria-label="empty" ></div>
+            <div id="2-2" class="letter-box"  aria-label="empty" ></div>
+            <div id="2-1" class="letter-box"  aria-label="empty" ></div>
+        </div>
+        <div id="row-3" class="row" role="group" >
+            <div id="3-5" class="letter-box"  aria-label="empty" ></div>
+            <div id="3-4" class="letter-box"  aria-label="empty" ></div>
+            <div id="3-3" class="letter-box"  aria-label="empty" ></div>
+            <div id="3-2" class="letter-box"  aria-label="empty" ></div>
+            <div id="3-1" class="letter-box"  aria-label="empty" ></div>
+        </div>
+        <div id="row-4" class="row" role="group" >
+            <div id="4-5" class="letter-box"  aria-label="empty" ></div>
+            <div id="4-4" class="letter-box"  aria-label="empty" ></div>
+            <div id="4-3" class="letter-box"  aria-label="empty" ></div>
+            <div id="4-2" class="letter-box"  aria-label="empty" ></div>
+            <div id="4-1" class="letter-box"  aria-label="empty" ></div>
+        </div>
+        <div id="row-5" class="row" role="group" >
+            <div id="5-5" class="letter-box"  aria-label="empty" ></div>
+            <div id="5-4" class="letter-box"  aria-label="empty" ></div>
+            <div id="5-3" class="letter-box"  aria-label="empty" ></div>
+            <div id="5-2" class="letter-box"  aria-label="empty" ></div>
+            <div id="5-1" class="letter-box"  aria-label="empty" ></div>
+        </div>
+        <div id="row-6" class="row" role="group" >
+            <div id="6-5" class="letter-box"  aria-label="empty" ></div>
+            <div id="6-4" class="letter-box"  aria-label="empty" ></div>
+            <div id="6-3" class="letter-box"  aria-label="empty" ></div>
+            <div id="6-2" class="letter-box"  aria-label="empty" ></div>
+            <div id="6-1" class="letter-box"  aria-label="empty" ></div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+    <div id="keyboard-container" role ="group">
+        <div id="keyboard-row1" class="keyboard-row">
+            <div class="spacer"></div>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ק" class="keyboard-key"  > ק </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ר" class="keyboard-key" > ר </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="א" class="keyboard-key" > א </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ט" class="keyboard-key" > ט </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ו" class="keyboard-key" > ו </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ן" class="keyboard-key" > ן </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ם" class="keyboard-key" > ם </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="פ" class="keyboard-key" > פ </button>
+                <div class="spacer"></div>
+        </div>
+        <div id="keyboard-row2" class="keyboard-row" role="group">
+            <button type="button" onclick="addWord(this.innerText)" data-key="ש" class="keyboard-key" > ש </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ד" class="keyboard-key" >ד </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ג" class="keyboard-key" > ג </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="כ" class="keyboard-key" > כ </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ע" class="keyboard-key" > ע </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="י" class="keyboard-key" > י </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ח" class="keyboard-key" > ח </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ל" class="keyboard-key" >ל </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ך" class="keyboard-key" >ך </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ף" class="keyboard-key" > ף </button>
+        </div>
+
+        <div id="keyboard-row3" class="keyboard-row" role="group">
+            <button type="button" onclick="checkWord()" id="enter"    class="keyboard-key" >הכנס </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ז" class="keyboard-key" >ז </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ס" class="keyboard-key" >ס </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ב" class="keyboard-key" > ב </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ה" class="keyboard-key" > ה </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="נ" class="keyboard-key" > נ </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="מ" class="keyboard-key" > מ </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="צ" class="keyboard-key" >צ </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ת" class="keyboard-key" >ת </button>
+            <button type="button" onclick="addWord(this.innerText)" data-key="ץ" class="keyboard-key" > ץ </button>
+            <button id="delete" onclick="deleteLetter()"  data-key="button"   class="keyboard-key">
+                <img src="3601151.png" >
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+</body>
+</html>

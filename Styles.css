@@ -1,0 +1,115 @@
+
+:root
+{
+    --keyboard-width-size:35px;
+    --keyboard-height-size:35px;
+    --letter-box-color:#818384;
+    --back-ground-color:#3a3a3c;
+    --correct-positon-color :#538d4e;
+    --correct-letter-color :#b59f3b;
+    --letter-color:white;
+    --font-wieght: 600;
+    --grid-gap:  1px;
+    --keyboard-intputkey-width: 65px;
+}
+
+header
+{
+    height: 50px;
+    border-bottom: var(--grid-gap) solid  #3a3a3c;
+    text-align: center;
+    font-family: "nyt-karnakcondensed", serif;
+    color: aliceblue;
+    font-size: 36px ;
+    font-weight: var(--font-wieght);
+}
+
+.game-UI{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#board-container
+{
+    display: grid;
+    color: var(--letter-color);
+    width: 375px;
+    margin-left:825px;
+    margin-top: 100px;
+    grid-gap: 5px;
+}
+
+.row
+{
+    display: grid;
+    grid-template-columns: repeat(5,75px);
+
+}
+.letter-box
+{
+    color :var(--letter-color);
+    border :var(--grid-gap) solid white;
+    margin-top: 2px;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    font-size: 50px;
+}
+#keyboard-container
+{
+    border: var(--grid-gap) solid ;
+    height: 150px;
+    width: 650px;
+    margin-top: 70px;
+    margin-left:750px;
+}
+
+
+.keyboard-row
+{
+    display: flex;
+    grid-template-columns: repeat(12,auto);
+    grid-gap: var(--grid-gap);
+    margin-left: 65px;
+}
+#keyboard-row1{
+    margin-left : 70px;
+}
+#keyboard-row2
+{
+    margin-left: 85px;
+}
+.keyboard-key
+{
+    width: var(--keyboard-width-size);
+    height: var(--keyboard-height-size);
+    font-weight: var(--font-wieght);
+    background: var(--letter-box-color);
+    color: var(--letter-color);
+    cursor: pointer;
+    text-align: center;
+}
+
+.spacer
+{
+    width: var(--keyboard-width-size);
+    height: var(--keyboard-height-size);
+}
+
+#enter
+{
+    width: var(--keyboard-intputkey-width);
+}
+
+#delete
+{
+    width: var(--keyboard-intputkey-width);
+    height: 45px;
+}
+
+html
+ {
+     background: black;
+ }
