@@ -30,7 +30,7 @@ function addWord(letter: string)
 
     // אם המטריצה הגיעה לסופה אז תוצג הודעה שהפסדת
 
-    if (usersBoard.row==6 && usersBoard.colum==5)
+    if (lost())
     {
         showLoserMessage()
         return;
@@ -93,7 +93,7 @@ function checkWord()
         paintLetters();
         return;
         // בודק אם המטריצה מלאה ואז השחקן מפסיד
-    }else if (usersBoard.row==6 && usersBoard.colum==5)
+    }else if (lost())
     {
         showLoserMessage()
         return;
@@ -125,15 +125,15 @@ function nextRow()
     resetUserColum()
 }
 
+function lost()
+{
+    return (usersBoard.row==6 && usersBoard.colum==5)
+}
+
 function paintLetters ()
 {
-    let boxToPaint;
     let colum;
     debugger;
-
-
-    //עיתון
-    //ענבים
 
     for (let i = 0; i < usersBoard.wordToGuess.length; i++)
     {

@@ -19,7 +19,7 @@ function addWord(letter) {
         resetGame();
     }
     // אם המטריצה הגיעה לסופה אז תוצג הודעה שהפסדת
-    if (usersBoard.row == 6 && usersBoard.colum == 5) {
+    if (lost()) {
         showLoserMessage();
         return;
     }
@@ -65,7 +65,7 @@ function checkWord() {
         return;
         // בודק אם המטריצה מלאה ואז השחקן מפסיד
     }
-    else if (usersBoard.row == 6 && usersBoard.colum == 5) {
+    else if (lost()) {
         showLoserMessage();
         return;
     }
@@ -89,12 +89,12 @@ function nextRow() {
     usersBoard.row = usersBoard.row + 1;
     resetUserColum();
 }
+function lost() {
+    return (usersBoard.row == 6 && usersBoard.colum == 5);
+}
 function paintLetters() {
-    var boxToPaint;
     var colum;
     debugger;
-    //עיתון
-    //ענבים
     for (var i = 0; i < usersBoard.wordToGuess.length; i++) {
         //אם המיקומים שווים הוא יצבע בירוק וידלג על הבלוק הבא
         if (usersBoard.wordToGuess.charAt(i) == usersBoard.userWord.charAt(i)) {
