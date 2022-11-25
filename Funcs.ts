@@ -21,6 +21,7 @@ function addWord(letter: string)
     if (usersBoard.won)
     {
         alert("זה כיף לנצח בפעם השנייה")
+        return;
     }
 
     if(!usersBoard.created)
