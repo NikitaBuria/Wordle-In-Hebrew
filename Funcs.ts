@@ -157,7 +157,7 @@ function paintLetters ()
                 break;
             }
 
-            if (j==4)
+            if (j==usersBoard.wordToGuess.length-1)
             {
                 changeBackground(usersBoard.userWord.charAt(i),"#3a3a3c");
             }
