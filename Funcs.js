@@ -12,10 +12,13 @@ var usersBoard = {
     won: false
 };
 function addWord(letter) {
-    if (usersBoard.won) {
+    if (usersBoard.won)
+    {
         alert("זה כיף לנצח בפעם השנייה");
+        return;
     }
-    if (!usersBoard.created) {
+    if (!usersBoard.created)
+    {
         resetGame();
     }
     // אם המטריצה הגיעה לסופה אז תוצג הודעה שהפסדת
